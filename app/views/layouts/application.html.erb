@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Timbu</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Mitto</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans:400,700,400italic">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <h1>timbu</h1>
+  <header>
+    <h1>Mitto</h1>
+    <h2>Web Developer</h2>
+    <ul>
+      <li class="meta" title="Published">08/22/2014</li>
+      <li class="candidates-count">Candidates: <span class="active" title="Runners">3</span> / <span class="total" title="Total candidates">8</span></li>
+    </ul>
+  </header>
 
   <section class="messages">
     <p class="notice"><%= notice %></p>
@@ -19,17 +27,9 @@
     <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
   <% end -%>
 
-  <h2>Position: <span>Web Developer</span></h2>
-
-  <section class="description">
-    <ul>
-      <li class="meta">Published: <span>08/22/2014</span></li>
-      <li class="candidates-count">Candidates: <span class="active">active: 3</span> &middot; <span class="all">total: 8</span></li>
-    </ul>
-  </section>
-  <hr>
-
-  <%= yield %>
+  <div class="content">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

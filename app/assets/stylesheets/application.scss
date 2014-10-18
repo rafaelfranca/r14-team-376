@@ -13,9 +13,10 @@
 
 // layouts
 @import "normalize",
-	"structure",
-	"positions",
-	"recruitments";
+  "structure",
+  "positions",
+  "recruitments";
 
 // components
-@import "components/button";
+@import "components/button",
+  "components/progress-bar";

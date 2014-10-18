@@ -14,7 +14,7 @@ class Users::RegistrationsController < ApplicationController
       @organization.set_owner!(@user)
 
       sign_in_and_redirect @user
-      flash[:notice] = t('devise.registrations.signed_up') if is_navigational_format?
+      flash[:notice] = t('devise.registrations.signed_up')
     else
       render 'new'
     end

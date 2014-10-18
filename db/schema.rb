@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20141018043112) do
     t.datetime "remember_created_at"
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

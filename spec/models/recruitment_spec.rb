@@ -33,4 +33,19 @@ RSpec.describe Recruitment, :type => :model do
 
     expect(recruitment.participants).to match_array [participant_1, participant_2]
   end
+
+  it 'makes progress on many ordered steps' do
+    step_1 = RecruitmentStep.new(order: 1, title: 'Entrevista via Skype')
+    step_2 = RecruitmentStep.new(order: 2, title: 'Mini app')
+    step_3 = RecruitmentStep.new(order: 3, title: 'Pair programming')
+
+    recruitment = Recruitment.new
+    recruitment.steps << step_1
+    recruitment.steps << step_2
+    recruitment.steps << step_3
+    recruitment.save!
+
+    expect(recruitment.steps.count).to eq 3
+    expect(recruitment.steps).to match_array [step_1, step_2, step_3]
+  end
 end

@@ -5,4 +5,5 @@ class Recruitment < ActiveRecord::Base
                           class_name: 'User',
                           association_foreign_key: 'participant_id',
                           join_table: 'recruitments_participants'
+  has_many :steps, class_name: 'RecruitmentStep'
 end

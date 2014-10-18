@@ -1,0 +1,24 @@
+.steps {
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 0 0 1em;
+
+    a {
+      display: block;
+      width: 150px;
+      height: 150px;
+      padding: 2em 1em 0 1em;
+      border-radius: 10px;
+      transition: background .3s ease;
+
+      &:hover { background: #F1F1F1; }
+    }
+  }
+}

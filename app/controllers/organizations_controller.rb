@@ -6,7 +6,8 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = Organization.new(params.require(:organization).permit(:name))
+    organization_params = params.require(:organization).permit(:name)
+    @organization = Organization.new(organization_params)
 
     if @organization.save
       redirect_to root_url

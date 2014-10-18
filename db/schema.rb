@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20141018215402) do
     t.string   "avatar"
   end
 
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.integer  "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recruitment_steps", force: true do |t|
     t.integer  "recruitment_id"
     t.integer  "order"
@@ -43,13 +50,6 @@ ActiveRecord::Schema.define(version: 20141018215402) do
   create_table "recruitments_participants", id: false, force: true do |t|
     t.integer "recruitment_id"
     t.integer "participant_id"
-  end
-
-  create_table "organizations", force: true do |t|
-    t.string   "name"
-    t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: true do |t|

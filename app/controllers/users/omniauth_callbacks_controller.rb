@@ -1,4 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  include OrganizationFetcher
+
   before_action :fetch_organization
 
   def github
@@ -16,16 +18,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       session['devise.github_data'] = request.env['omniauth.auth']
       redirect_to new_users_url
-    end
-  end
-
-  private
-
-  def fetch_organization
-    @organization = Organization.find_by(id: session['devise.organization_id'])
-
-    unless @organization
-      redirect_to new_organizations_url, alert: 'Create a new organization'
     end
   end
 end

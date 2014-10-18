@@ -21,6 +21,8 @@ gem 'jquery-rails', '~> 4.0.0.beta2'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+gem 'omniauth-github', '~> 1.1'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

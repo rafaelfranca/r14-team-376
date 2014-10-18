@@ -48,4 +48,27 @@ RSpec.describe Recruitment, :type => :model do
     expect(recruitment.steps.count).to eq 3
     expect(recruitment.steps).to match_array [step_1, step_2, step_3]
   end
+
+  it 'measures its progress based upon approved steps' do
+    step_1 = RecruitmentStep.new(order: 1, title: 'Entrevista via Skype', state: 'waiting')
+    step_2 = RecruitmentStep.new(order: 2, title: 'Mini app', state: 'waiting')
+    step_3 = RecruitmentStep.new(order: 3, title: 'Pair programming', state: 'waiting')
+
+    recruitment = Recruitment.new
+    recruitment.steps << step_1
+    recruitment.steps << step_2
+    recruitment.steps << step_3
+    recruitment.save!
+
+    expect(recruitment.progress).to eq 0.0
+
+    recruitment.steps.find_by(order: 1).update_attribute(:state, 'approved')
+    expect(recruitment.progress).to eq 33.33
+
+    recruitment.steps.find_by(order: 2).update_attribute(:state, 'approved')
+    expect(recruitment.progress).to eq 66.67
+
+    recruitment.steps.find_by(order: 3).update_attribute(:state, 'approved')
+    expect(recruitment.progress).to eq 100.0
+  end
 end

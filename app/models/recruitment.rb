@@ -20,4 +20,22 @@ class Recruitment < ActiveRecord::Base
     approved_steps_count = self.steps.where(state: 'approved').count
     (approved_steps_count * 100.0 / total_steps_count).round(2)
   end
+
+  # Public: The current state based on the overall steps states.
+  #
+  # The expected states are:
+  #   * 'waiting'
+  #   * 'reproved'
+  #   * 'approved'
+  #
+  # Returns a String.
+  def current_state
+    if self.steps.where(state: 'reproved').exists?
+      'reproved'
+    elsif self.steps.pluck(:state).uniq == ['approved']
+      'approved'
+    else
+      'waiting'
+    end
+  end
 end

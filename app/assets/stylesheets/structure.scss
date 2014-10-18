@@ -1,16 +1,23 @@
 * {
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
   padding: 2em 4em;
   font-family: sans-serif;
 }
-.ib { display: inline-block; }
+
 hr {
   height: 1px;
   margin: 2em 0;
   border: 0;
   border-bottom: 1px solid #F1F1F1;
+}
+
+.ib { display: inline-block; }
+
+a {
+  color: #333;
+  text-decoration: none;
 }

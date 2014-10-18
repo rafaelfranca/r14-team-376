@@ -1,8 +1,12 @@
 <h1>Create a new organization</h1>
 
 <%= form_for(@organization) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
 
-  <%= f.submit 'Create' %>
+  <div>
+    <%= f.submit 'Create' %>
+  </div>
 <% end -%>

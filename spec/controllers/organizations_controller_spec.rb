@@ -6,7 +6,7 @@ RSpec.describe OrganizationsController, type: :controller do
       post :create, organization: { name: 'Garota Safada' }
 
       organization = Organization.last
-      expect(session[:organization_id]).to eq organization.id
+      expect(session['devise.organization_id']).to eq organization.id
       expect(response).to redirect_to(new_users_url)
     end
 

@@ -1,6 +1,6 @@
 class Users::RegistrationsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :check_organization_id
+  before_action :fetch_organization
 
   def new
     @user = User.new
@@ -20,8 +20,10 @@ class Users::RegistrationsController < ApplicationController
 
   private
 
-  def check_organization_id
-    unless session[:organization_id]
+  def fetch_organization
+    @organization = Organization.find_by(id: session['devise.organization_id'])
+
+    unless @organization
       redirect_to new_organizations_url, alert: 'Create a new organization'
     end
   end

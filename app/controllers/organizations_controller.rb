@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
 
     if @organization.save
-      session[:organization_id] = @organization.id
+      session['devise.organization_id'] = @organization.id
       redirect_to new_users_url
     else
       render 'new'

@@ -26,6 +26,7 @@ $step-height: 100px;
     width: $step-width;
     height: $step-height;
     max-height: $step-height;
+    padding: 1.5em 1em;
     margin: 0 0 1em 1em;
     background: #F1F1F1;
     border-radius: 10px;
@@ -48,19 +49,16 @@ $step-height: 100px;
 
     a {
       display: block;
-      width: $step-width;
-      min-height: $step-height;
-      padding: 1em;
+      width: 100%;
+      float: left;
       border-radius: 10px;
       vertical-align: middle;
       transition: background .3s ease;
       z-index: 1;
-
-      &:hover { background: #F1F1F1; }
     }
 
-    .approved { background: #D1F6C0; }
-    .reproved { background: #F3CDCD; }
+    &.approved { background: #D1F6C0; }
+    &.reproved { background: #F3CDCD; }
   }
 }
 

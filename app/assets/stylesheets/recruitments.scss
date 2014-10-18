@@ -1,5 +1,5 @@
 $step-width: 170px;
-$step-height: 80px;
+$step-height: 60px;
 
 .candidate.recruitment {
   transition: none;
@@ -26,16 +26,28 @@ $step-height: 80px;
       display: block;
       width: $step-width;
       min-height: $step-height;
-      margin: 0;
-      padding: 2em 1em;
+      margin: 0 0 2em 0;
+      padding: 1.5em 1em;
       border-radius: 10px;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
       vertical-align: middle;
       transition: background .3s ease;
 
       &:hover { background: #F1F1F1; }
     }
 
-    .approved { background: #D1F6C0; }
-    .reproved { background: #F3CDCD; }
+    .approved {
+      border-left: 3px solid #6CC644;
+      border-right: 3px solid #6CC644;
+      background: #D1F6C0;
+    }
+    .reproved {
+      border-left: 3px solid #C64444;
+      border-right: 3px solid #C64444;
+      background: #F3CDCD;
+    }
   }
 }
+
+.action { text-align: center; }

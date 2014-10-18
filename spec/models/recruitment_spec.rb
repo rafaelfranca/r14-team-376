@@ -21,4 +21,16 @@ RSpec.describe Recruitment, :type => :model do
 
     expect(recruitment.candidate).to eq candidate
   end
+
+  it 'is kept up by many participants' do
+    participant_1 = User.create!(email: 'rondy.sousa@ptec.com.br', password: '12345678')
+    participant_2 = User.create!(email: 'rafael.franca@ptec.com.br', password: '12345678')
+
+    recruitment = Recruitment.new
+    recruitment.participants << participant_1
+    recruitment.participants << participant_2
+    recruitment.save!
+
+    expect(recruitment.participants).to match_array [participant_1, participant_2]
+  end
 end

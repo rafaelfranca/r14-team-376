@@ -10,7 +10,8 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
 
     if @organization.save
-      redirect_to root_url
+      session[:organization_id] = @organization.id
+      redirect_to users_new_url
     else
       render 'new'
     end

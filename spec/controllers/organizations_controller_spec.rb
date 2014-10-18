@@ -5,7 +5,9 @@ RSpec.describe OrganizationsController, type: :controller do
     it 'redirects to root_url if organization can be create' do
       post :create, organization: { name: 'Garota Safada' }
 
-      expect(response).to redirect_to(root_url)
+      organization = Organization.last
+      expect(session[:organization_id]).to eq organization.id
+      expect(response).to redirect_to(users_new_url)
     end
 
     it 'renders new if organization cannot be created' do

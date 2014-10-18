@@ -5,7 +5,7 @@
     <h3 class="ib"><%= @recruitment.candidate.name %></h3>
     <div class="participants">
       <% @recruitment.participants.each do |participant| %>
-        <%= image_tag participant.avatar, alt: participant.name, title: participant.name %>
+        <%= image_tag participant.avatar + '&s=64', alt: participant.name, title: participant.name %>
       <% end %>
     </div>
     <div class="progress-bar"><span class="progress" style="width: <%= @recruitment.progress %>%"></span></div>

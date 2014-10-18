@@ -43,10 +43,17 @@
   background: #F0F0F0;
   border-radius: 5px;
   overflow: hidden;
+  vertical-align: top;
 }
 .progress-bar .progress {
   display: inline-block;
   width: 50%;
   height: 10px;
   background-color: #6cc644;
+}
+
+.candidate.reproved {
+  .progress-bar {
+    background-color: red;
+  }
 }

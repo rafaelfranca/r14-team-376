@@ -11,7 +11,7 @@ class OrganizationsController < ApplicationController
 
     if @organization.save
       session[:organization_id] = @organization.id
-      redirect_to users_new_url
+      redirect_to new_users_url
     else
       render 'new'
     end

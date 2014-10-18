@@ -2,11 +2,13 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  // counter-reset: candidate-counter;
 }
 .candidate {
+  position: relative;
   display: inline-block;
-  width: 500px;
-  height: 106px;
+  width: 47%;
+  height: 135px;
   padding: 1em;
   margin: 0 0 1em 1em;
   border-radius: 10px;
@@ -15,11 +17,20 @@
   &:hover {
     background: #F1F1F1;
   }
+  &:after {
+    position: absolute;
+    top: .3em;
+    right: .2em;
+    font: normal 32px/29px "Abril Fatface", cursive;
+    color: #E3E3E3;
+    // content: counter(candidate-counter);
+    // counter-increment: candidate-counter;
+  }
 }
 
 .candidate .info {
   display: inline-block;
-  width: 250px;
+  width: 300px;
   height: 96px;
 }
 .candidate h3 {
@@ -32,25 +43,9 @@
   border-radius: 50%;
 }
 .participants img {
+  margin: 0 7px 0 0;
   border-radius: 50%;
 }
-.progress-bar {
-  display: block;
-  height: 10px;
-  width: 100%;
-  margin-top: 1em;
-  background: #F0F0F0;
-  border-radius: 5px;
-  overflow: hidden;
-  vertical-align: top;
-}
-.progress-bar .progress {
-  display: inline-block;
-  width: 50%;
-  height: 10px;
-  background-color: #6cc644;
-}
-
 .candidate.reproved {
   .progress-bar {
     background-color: red;

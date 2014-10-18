@@ -11,6 +11,8 @@ class Users::RegistrationsController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      @organization.set_owner!(@user)
+
       sign_in_and_redirect @user
       flash[:notice] = t('devise.registrations.signed_up') if is_navigational_format?
     else

@@ -1,3 +1,12 @@
+$step-width: 170px;
+$step-height: 80px;
+
+.candidate.recruitment {
+  transition: none;
+
+  &:hover { background: transparent; }
+}
+
 .steps {
   ol {
     margin: 0;
@@ -8,17 +17,25 @@
 
   li {
     display: inline-block;
+    width: $step-width;
+    // height: $step-height;
     margin: 0 0 0 1em;
+    vertical-align: top;
 
     a {
       display: block;
-      width: 150px;
-      height: 150px;
-      padding: 2em 1em 0 1em;
+      width: $step-width;
+      min-height: $step-height;
+      margin: 0;
+      padding: 2em 1em;
       border-radius: 10px;
+      vertical-align: middle;
       transition: background .3s ease;
 
       &:hover { background: #F1F1F1; }
     }
+
+    .approved { background: #D1F6C0; }
+    .reproved { background: #F3CDCD; }
   }
 }

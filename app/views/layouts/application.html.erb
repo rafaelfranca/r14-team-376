@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Timbu</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Mitto</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans:400,700,400italic">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+
+  <header>
+    <h1>Mitto</h1>
+    <h2>Web Developer</h2>
+    <ul>
+      <li class="meta" title="Published">08/22/2014</li>
+      <li class="candidates-count">Candidates: <span class="active" title="Runners">3</span> / <span class="total" title="Total candidates">8</span></li>
+    </ul>
+  </header>
+
+  <section class="messages">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </section>
 
   <% if user_signed_in? -%>
     <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
   <% end -%>
 
-  <%= yield %>
+  <div class="content">
+    <%= yield %>
+  </div>
+
 </body>
 </html>

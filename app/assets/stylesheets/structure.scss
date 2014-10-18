@@ -1,0 +1,62 @@
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0 4em;
+  font-family: "Open Sans", sans-serif;
+}
+
+hr {
+  height: 1px;
+  margin: 2em 0;
+  border: 0;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.ib { display: inline-block; }
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+header {
+  position: relative;
+  height: 120px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #333;
+
+  h1 {
+    float: left;
+    margin: .2em 0 .5em 0;
+    font: normal 87px/84px "Abril Fatface", cursive;
+  }
+
+  h2 {
+    float: right;
+    margin-top: .8em;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+
+  ul {
+    position: absolute;
+    bottom: 1em;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+    font-size: .8em;
+  }
+  .candidates-count:before {
+    margin: 0 .5em 0 .3em;
+    content: "·";
+    font-weight: bold;
+  }
+}

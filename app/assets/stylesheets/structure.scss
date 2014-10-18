@@ -6,6 +6,7 @@
 body {
   padding: 0 4em;
   font-family: "Open Sans", sans-serif;
+  color: #333;
 }
 
 hr {
@@ -32,6 +33,8 @@ header {
     float: left;
     margin: .2em 0 .5em 0;
     font: normal 87px/84px "Abril Fatface", cursive;
+
+    a{ color: #333; }
   }
 
   h2 {

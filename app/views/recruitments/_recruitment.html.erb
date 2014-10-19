@@ -1,0 +1,19 @@
+<li class="candidate">
+  <%= link_to [@position, recruitment] do %>
+    <%= avatar(recruitment.candidate.avatar, size: "96", alt: recruitment.candidate.name, class: "profile-picture ib") %>
+
+    <div class="info">
+      <h3 class="ib"><%= recruitment.candidate.name %></h3>
+
+      <div class="participants">
+        <% recruitment.participants.each do |participant| %>
+          <%= avatar(participant.avatar, size: "32", alt: participant.name) %>
+      <% end %>
+      </div>
+
+      <div class="progress-bar">
+        <span class="progress" style="width: <%= recruitment.progress %>%"></span>
+      </div>
+    </div>
+  <% end -%>
+</li>

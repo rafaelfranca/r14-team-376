@@ -39,11 +39,23 @@ header {
 }
 
 h2 {
+  position: relative;
   margin: 0;
   padding: 0;
   font-size: 2em;
   text-transform: uppercase;
   letter-spacing: -1px;
+
+  &:before {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    content: "position:";
+    font-weight: normal;
+    font-size: .5em;
+    color: #999;
+    letter-spacing: normal;
+  }
 }
 
 .user-info {
@@ -89,7 +101,7 @@ h2 {
 }
 .user-info, .position-data ul {
   padding: 0;
-  margin: 0;
+  margin: -10px 0 0 0;
   list-style: none;
 
   li {

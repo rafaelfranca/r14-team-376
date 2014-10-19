@@ -1,5 +1,5 @@
 $step-width: 170px;
-$step-height: 100px;
+$step-height: 120px;
 
 .candidate.recruitment {
   display: block;
@@ -26,28 +26,35 @@ $step-height: 100px;
     width: $step-width;
     height: $step-height;
     max-height: $step-height;
-    padding: 1.5em 1em;
-    margin: 0 0 1em 1em;
+    padding: 1.8em 1em;
+    margin: 0 0 1em 2.5em;
     background: #F1F1F1;
     border-radius: 10px;
 
     &:before {
       position: absolute;
-      top: -7px;
-      left: -7px;
-      width: 20px;
-      height: 20px;
-      font-size: .8em;
+      top: 0;
+      left: 0;
+      padding: 2px 8px;
+      font-family: "Abril Fatface", cursive;
+      font-size: 1em;
       text-align: center;
-      background: blue;
+      background: #CCC;
       color: white;
-      border-radius: 50%;
+      border-radius: 5px;
+      overflow: hidden;
       content: counter(steps-counter);
       counter-increment: steps-counter;
       z-index: 0;
     }
 
+
+    &.current:before {
+      background: yellow;
+    }
+
     a {
+      position: relative;
       display: block;
       width: 100%;
       float: left;
@@ -60,9 +67,4 @@ $step-height: 100px;
     &.approved { background: #D1F6C0; }
     &.reproved { background: #F3CDCD; }
   }
-}
-
-.action {
-  margin: 2em 0;
-  text-align: center;
 }

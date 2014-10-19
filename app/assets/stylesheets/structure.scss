@@ -85,11 +85,12 @@ h2 {
     right: -10px;
     padding: 0 7px;
     margin: -15px 0 0 5px;
-    border-radius: 50%;
     background: #F1F1F1;
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
+    border-radius: 50%;
+    border: 1px solid #CCC;
     z-index: 2;
 
     a { color: #CC1616; }

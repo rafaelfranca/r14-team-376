@@ -8,6 +8,16 @@ class Recruitment < ActiveRecord::Base
                           join_table: 'recruitments_participants'
   has_many :steps, class_name: 'RecruitmentStep'
 
+  after_save do |recruitment|
+    recruitment.position.steps_template.each do |step|
+      recruitment.steps.create!(
+        order: step['order'],
+        title: step['title'],
+        description: step['description']
+      )
+    end
+  end
+
   # Public: The current progress based on approved steps.
   #
   # Examples

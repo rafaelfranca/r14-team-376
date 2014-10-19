@@ -149,4 +149,40 @@ RSpec.describe Recruitment, :type => :model do
       expect(recruitment.next_step).to eq nil
     end
   end
+
+  it 'creates steps from the position' do
+    position = positions(:developer)
+    position.steps_template = [
+      { 'order' => '1', 'title' => 'Skype', 'description' => 'Bate-papo com MP e PB' },
+      { 'order' => '2', 'title' => 'Mini app', 'description' => 'TODO app em Rails' },
+      { 'order' => '3', 'title' => 'Pair programming', 'description' => 'Pair com o JV' },
+      { 'order' => '4', 'title' => 'Mesa de bar', 'description' => 'Tomar umas com o GG' }
+    ]
+    position.save!
+
+    recruitment = Recruitment.create!(position: position)
+    expect(recruitment.steps.count).to eq 4
+
+    steps = recruitment.steps.order(:order)
+
+    step_1 = steps.first
+    expect(step_1.order).to eq 1
+    expect(step_1.title).to eq 'Skype'
+    expect(step_1.description).to eq 'Bate-papo com MP e PB'
+
+    step_2 = steps.second
+    expect(step_2.order).to eq 2
+    expect(step_2.title).to eq 'Mini app'
+    expect(step_2.description).to eq 'TODO app em Rails'
+
+    step_3 = steps.third
+    expect(step_3.order).to eq 3
+    expect(step_3.title).to eq 'Pair programming'
+    expect(step_3.description).to eq 'Pair com o JV'
+
+    step_4 = steps.last
+    expect(step_4.order).to eq 4
+    expect(step_4.title).to eq 'Mesa de bar'
+    expect(step_4.description).to eq 'Tomar umas com o GG'
+  end
 end

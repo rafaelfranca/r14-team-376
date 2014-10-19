@@ -5,7 +5,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     it 'redirects to new organization path if organization_id is not set' do
       get :new
 
-      expect(response).to redirect_to(new_organizations_url)
+      expect(response).to redirect_to(new_organization_url)
     end
 
     it 'renders new if organization_id is set' do
@@ -26,7 +26,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     it 'redirects to new organization path if organization_id is not set' do
       post :create, user: { name: 'Wesley Safadao', email: 'wesleysafadao@garotasafada.com', password: '12345678', password_confirmation: '12345678' }
 
-      expect(response).to redirect_to(new_organizations_url)
+      expect(response).to redirect_to(new_organization_url)
     end
 
     it 'redirects to root_url if user can be create' do

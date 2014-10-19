@@ -11,7 +11,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
     it 'redirects to new organization path if organization_id is not set' do
       post :github
 
-      expect(response).to redirect_to(new_organizations_url)
+      expect(response).to redirect_to(new_organization_url)
     end
 
     it 'redirects to root_url if user can be create' do

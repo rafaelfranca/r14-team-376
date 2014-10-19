@@ -1,0 +1,87 @@
+.home-howto,
+.home-welcome {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 50px;
+}
+
+.home-welcome {
+  h2 {
+    margin: .5em 1.5em 1em;
+    font: normal 67px "Abril Fatface", cursive;
+    text-transform: none;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  .button {
+    display: block;
+    padding: .5em 1em;
+    width: 390px;
+    margin: 0 auto;
+    font: bold 37px/34px Montserrat;
+    background: transparent;
+    border-radius: 10px;
+    border: 5px solid #333;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
+
+    &:hover { border: 5px solid #333; }
+  }
+}
+
+.home-howto {
+  position: relative;
+  overflow: hidden;
+
+  & > ul {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+  }
+
+  .step {
+    display: inline-block;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    .number {
+      font: normal 72px "Abril Fatface", cursive;
+      color: #CCC;
+    }
+    p {
+      margin: -77px 0 0 30px;
+      width: 350px;
+      font: bold 45px/42px Montserrat;
+      letter-spacing: -2px;
+      color: #333;
+    }
+
+    &.one {
+      .image {
+        position: absolute;
+        top: 80px;
+        right: 0;
+      }
+    }
+  }
+
+}
+
+
+.home-footer {
+  margin: 2em 0 0 0;
+  text-align: center;
+  font: normal 17px/14px Montserrat;
+  color: #333;
+
+  a { color: #DB0000; }
+}

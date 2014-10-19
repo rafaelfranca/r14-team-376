@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'recruitment_steps/show'
+
   resources :organizations, only: [:new, :create]
 
   devise_scope :user do

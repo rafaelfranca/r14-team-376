@@ -8,6 +8,6 @@
   background: #F1F1F1;
 
   &:first-child { margin: 0 0 2em 0; }
-  &:hover { border: 1px solid #CCC; }
+  &:hover, &:focus { border: 1px solid #CCC; outline: none; }
   &:active { border: 1px solid transparent; background: #333; color: #CCC; }
 }

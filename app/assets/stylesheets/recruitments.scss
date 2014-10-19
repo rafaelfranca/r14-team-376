@@ -1,6 +1,36 @@
 $step-width: 170px;
 $step-height: 120px;
 
+.position-data h2 {
+  &:before {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    content: "position:";
+    font-weight: normal;
+    font-size: .5em;
+    color: #999;
+    letter-spacing: normal;
+  }
+}
+
+.position-data ul {
+  padding: 0;
+  margin: -10px 0 0 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    font-size: .8em;
+  }
+
+  .candidates-count:before {
+    margin: 0 .5em 0 .3em;
+    content: "·";
+    font-weight: bold;
+  }
+}
+
 .candidate.recruitment {
   display: block;
   width: 450px;

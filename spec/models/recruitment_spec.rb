@@ -114,13 +114,11 @@ RSpec.describe Recruitment, :type => :model do
     let(:step_3) { RecruitmentStep.new(order: 3, title: 'Pair programming', state: 'waiting') }
 
     subject(:recruitment) do
-      recruitment = Recruitment.new
+      recruitment = Recruitment.create!
 
       recruitment.steps << step_1
       recruitment.steps << step_2
       recruitment.steps << step_3
-
-      recruitment.save!
 
       recruitment
     end

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.3'
+
 gem 'rails', github: "rails/rails"
 
 # Use postgresql as the database for Active Record
@@ -33,7 +35,12 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'spring-commands-rspec'
 
   gem 'rspec-rails', '~> 3.1'
 end
 
+group :production do
+  gem 'rails_stdout_logging'
+  gem 'puma'
+end

@@ -20,7 +20,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
 
       post :github
 
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(organization_url(organization))
       expect(session['devise.organization_id']).to be_nil
     end
 
@@ -30,7 +30,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
 
       post :github
 
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(organization_url(organization))
 
       user = User.last
       expect(user.organization).to eq organization
@@ -44,7 +44,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
 
       post :github
 
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(organization_url(organization))
 
       user = User.last
       expect(user.organization).to eq organization

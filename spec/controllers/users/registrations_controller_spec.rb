@@ -36,7 +36,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       post :create, user: { name: 'Wesley Safadao', email: 'wesleysafadao@garotasafada.com', password: '12345678', password_confirmation: '12345678' }
 
       expect(session['devise.organization_id']).to be_nil
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(organization_url(organization))
 
       user = User.last
       expect(user.organization).to eq organization

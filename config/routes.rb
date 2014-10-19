@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :comments, only: [:create]
 
-  get 'positions' => 'positions#index'
-
   resources :organizations, only: [:new, :create]
 
   devise_scope :user do

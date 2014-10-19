@@ -79,9 +79,11 @@ RSpec.describe Recruitment, :type => :model do
       step_3 = RecruitmentStep.new(order: 3, title: 'Pair programming', state: 'waiting')
 
       recruitment = Recruitment.new
+
       recruitment.steps << step_1
       recruitment.steps << step_2
       recruitment.steps << step_3
+
       recruitment.save!
 
       recruitment
@@ -105,6 +107,55 @@ RSpec.describe Recruitment, :type => :model do
     it 'is "reproved" when at least one step is reproved' do
       recruitment.steps.find_by(order: 1).update_attribute(:state, 'reproved')
       expect(recruitment.current_state).to eq 'reproved'
+    end
+  end
+
+  describe '#next_step' do
+    let(:step_1) { RecruitmentStep.new(order: 1, title: 'Entrevista via Skype', state: 'waiting') }
+    let(:step_2) { RecruitmentStep.new(order: 2, title: 'Mini app', state: 'waiting') }
+    let(:step_3) { RecruitmentStep.new(order: 3, title: 'Pair programming', state: 'waiting') }
+
+    subject(:recruitment) do
+      recruitment = Recruitment.new
+
+      recruitment.steps << step_1
+      recruitment.steps << step_2
+      recruitment.steps << step_3
+
+      recruitment.save!
+
+      recruitment
+    end
+
+    it 'is the first step when all steps are waiting' do
+      expect(recruitment.next_step).to eq step_1
+    end
+
+    it 'is the first waiting step after the last approved one' do
+      recruitment.steps.find_by(order: 1).update_attribute(:state, 'approved')
+      expect(recruitment.next_step).to eq step_2
+
+      recruitment.steps.find_by(order: 2).update_attribute(:state, 'approved')
+      expect(recruitment.next_step).to eq step_3
+    end
+
+    it 'is nil when all steps are approved' do
+      recruitment.steps.update_all(state: 'approved')
+
+      expect(recruitment.next_step).to eq nil
+    end
+
+    it 'is nil when there is at least one reproved step' do
+      recruitment.steps.find_by(order: 1).update_attribute(:state, 'reproved')
+      expect(recruitment.next_step).to eq nil
+
+      recruitment.steps.update_all(state: 'waiting')
+      recruitment.steps.find_by(order: 2).update_attribute(:state, 'reproved')
+      expect(recruitment.next_step).to eq nil
+
+      recruitment.steps.update_all(state: 'waiting')
+      recruitment.steps.find_by(order: 3).update_attribute(:state, 'reproved')
+      expect(recruitment.next_step).to eq nil
     end
   end
 end

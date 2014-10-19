@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019202342) do
+ActiveRecord::Schema.define(version: 20141019213225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20141019202342) do
     t.integer  "organization_id", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "steps_template"
   end
 
   add_index "positions", ["organization_id"], name: "index_positions_on_organization_id", using: :btree

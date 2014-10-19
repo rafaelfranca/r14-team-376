@@ -23,6 +23,8 @@
           <p class="profile-picture"><%= avatar(current_user.avatar, size: "64", alt: current_user.name) %></p>
           <p class="user-name"><%= current_user.name %></p>
           <p class="logout"><%= link_to raw('&times;'), destroy_user_session_path, method: :delete, title: "Log out" %></p>
+        <% else -%>
+          <p><%= link_to 'Sign Up', new_organization_path %>
         <% end -%>
       </li>
     </ul>

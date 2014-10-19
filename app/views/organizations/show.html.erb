@@ -1,0 +1,9 @@
+<h2><%= @organization.name %></h2>
+
+<% @organization.positions.each do |position| -%>
+  <ul>
+    <li><%= link_to position.title, position %></li>
+  </ul>
+<% end -%>
+
+<%= link_to 'Add a new position', new_position_path, class: "button" %>

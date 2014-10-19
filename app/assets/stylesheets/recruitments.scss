@@ -2,6 +2,8 @@ $step-width: 170px;
 $step-height: 120px;
 
 .position-data h2 {
+  margin-top: 10px;
+
   &:before {
     position: absolute;
     top: -10px;

@@ -1,7 +1,6 @@
-class Users::RegistrationsController < ApplicationController
+class Users::RegistrationsController < DeviseController
   include OrganizationFetcher
 
-  skip_before_action :authenticate_user!
   before_action :fetch_organization
 
   def new

@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Users::RegistrationsController, type: :controller do
+  before do
+    request.env["devise.mapping"] = Devise.mappings[:user]
+  end
+
   describe 'GET new' do
     it 'redirects to new organization path if organization_id is not set' do
       get :new
 
-      expect(response).to redirect_to(new_organizations_url)
+      expect(response).to redirect_to(new_organization_url)
     end
 
     it 'renders new if organization_id is set' do
@@ -19,14 +23,10 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   end
 
   describe 'POST create' do
-    before do
-      request.env["devise.mapping"] = Devise.mappings[:user]
-    end
-
     it 'redirects to new organization path if organization_id is not set' do
       post :create, user: { name: 'Wesley Safadao', email: 'wesleysafadao@garotasafada.com', password: '12345678', password_confirmation: '12345678' }
 
-      expect(response).to redirect_to(new_organizations_url)
+      expect(response).to redirect_to(new_organization_url)
     end
 
     it 'redirects to root_url if user can be create' do
@@ -36,7 +36,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       post :create, user: { name: 'Wesley Safadao', email: 'wesleysafadao@garotasafada.com', password: '12345678', password_confirmation: '12345678' }
 
       expect(session['devise.organization_id']).to be_nil
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(organization_url(organization))
 
       user = User.last
       expect(user.organization).to eq organization

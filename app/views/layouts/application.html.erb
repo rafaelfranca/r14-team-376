@@ -2,21 +2,34 @@
 <html>
 <head>
   <title>Mitto</title>
+  <meta charset="utf-8">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans:400,700,400italic">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans:400,700,400italic|Montserrat:400,700">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
   <header>
-    <h1><a href="/">Mitto</a></h1>
-    <ul class="user-info">
-      <li>
+    <h1>
+      <% if user_signed_in? -%>
+        <%= link_to 'Mitto', organization_path(current_user.organization) %>
+      <% else -%>
+        <a href="/">Mitto</a>
+      <% end -%>
+    </h1>
+    <ul class="navigation">
         <% if user_signed_in? -%>
-          <p class="profile-picture"><%= avatar(current_user.avatar, size: "64", alt: current_user.name) %></p>
-          <p class="user-name"><%= current_user.name %></p>
-          <p class="logout"><%= link_to raw('&times;'), destroy_user_session_path, method: :delete, title: "Log out" %></p>
+          <li class="user-info">
+            <p class="profile-picture"><%= avatar(current_user.avatar, size: "64", alt: current_user.name) %></p>
+            <p class="user-name"><%= current_user.name %></p>
+            <p class="logout"><%= link_to raw('&times;'), destroy_user_session_path, method: :delete, title: "Log out" %></p>
+          </li>
+        <% else -%>
+          <li class="session-actions">
+            <p><%= link_to 'Sign In', new_user_session_path %></p>
+            <p><%= link_to 'Sign Up', new_organization_path %></p>
+          </li>
         <% end -%>
       </li>
     </ul>

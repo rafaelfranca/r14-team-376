@@ -1,7 +1,8 @@
 <section class="position-data">
-  <h2>Web Developer</h2>
+  <h2><%= position.title %></h2>
+  <p><%= position.description %></p>
   <ul>
-    <li class="meta" title="Published">08/22/2014</li>
+    <li class="meta" title="Published"><%= l(position.created_at, format: :long) %></li>
     <li class="candidates-count">Candidates: <span class="active" title="Runners">3</span> / <span class="total" title="Total candidates">8</span></li>
   </ul>
 </section>

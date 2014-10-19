@@ -5,6 +5,8 @@ class Organization < ActiveRecord::Base
 
   validates_presence_of :name
 
+  to_param :name
+
   def set_owner!(owner)
     if self.owner
       raise AlreadyHasOwnerError, 'Organization already has an owner'

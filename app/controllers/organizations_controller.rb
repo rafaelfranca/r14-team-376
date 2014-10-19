@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   def new
     @organization = Organization.new
@@ -14,6 +14,14 @@ class OrganizationsController < ApplicationController
       redirect_to new_users_url
     else
       render 'new'
+    end
+  end
+
+  def show
+    @organization = Organization.find(params[:organization_id])
+
+    if current_user.organization != @organization
+      raise ActiveRecord::RecordNotFound
     end
   end
 end

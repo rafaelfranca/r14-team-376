@@ -1,0 +1,32 @@
+<section class="candidate recruitment">
+  <%= image_tag @recruitment.candidate.avatar + "&s=192", alt: @recruitment.candidate.name, title: @recruitment.candidate.name, width: "96", height: "96", class: "profile-picture ib" %>
+
+  <div class="info">
+    <h3 class="ib"><%= @recruitment.candidate.name %></h3>
+
+    <div class="participants">
+      <% @recruitment.participants.each do |participant| %>
+        <%= image_tag participant.avatar + '&s=64', alt: participant.name, title: participant.name, width: '32', height: '32' %>
+      <% end %>
+    </div>
+
+    <div class="progress-bar">
+      <span class="progress" style="width: <%= @recruitment.progress %>%"></span>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <ol>
+    <% @recruitment.steps.order(:order).each do |step| %>
+      <%
+        step_html_class = [step.state]
+        step_html_class << 'next-step' if step == @recruitment.next_step
+      %>
+
+      <%= content_tag :li, class: step_html_class do %>
+        <%= link_to step.title, "#" %>
+      <% end %>
+    <% end %>
+  </ol>
+</section>

@@ -11,16 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018184120) do
+ActiveRecord::Schema.define(version: 20141018215402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "candidates", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "avatar"
+  end
 
   create_table "organizations", force: true do |t|
     t.string   "name"
     t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "recruitment_steps", force: true do |t|
+    t.integer  "recruitment_id"
+    t.integer  "order"
+    t.string   "title"
+    t.text     "description"
+    t.string   "state",          default: "waiting"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "recruitments", force: true do |t|
+    t.integer  "candidate_id"
+    t.integer  "recruiter_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "recruitments_participants", id: false, force: true do |t|
+    t.integer "recruitment_id"
+    t.integer "participant_id"
   end
 
   create_table "users", force: true do |t|
@@ -32,7 +61,7 @@ ActiveRecord::Schema.define(version: 20141018184120) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "image"
+    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"

@@ -1,0 +1,56 @@
+.candidate-list ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.candidate {
+  position: relative;
+  display: inline-block;
+  width: 47%;
+  height: 135px;
+  padding: 1em;
+  margin: 0 0 1em 1em;
+  border-radius: 10px;
+  transition: background .3s ease;
+
+  &:hover {
+    background: #F1F1F1;
+  }
+  &:after {
+    position: absolute;
+    top: .3em;
+    right: .2em;
+    font: normal 32px/29px "Abril Fatface", cursive;
+    color: #E3E3E3;
+  }
+}
+
+.candidate .info {
+  display: inline-block;
+  width: 300px;
+  height: 96px;
+}
+.candidate h3 {
+  margin: .3em 0 .5em 0;
+  text-transform: uppercase;
+}
+.candidate .profile-picture {
+  float: left;
+  margin: 0 1em 0 0;
+  border-radius: 50%;
+}
+.participants {
+  img {
+    border-radius: 50%;
+    border: 3px solid transparent;
+  }
+
+  .referrer { border: 3px solid red; }
+  .recruiter { border: 3px solid hotpink; }
+}
+
+.candidate.reproved {
+  .progress-bar {
+    background-color: red;
+  }
+}

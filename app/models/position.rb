@@ -3,4 +3,6 @@ class Position < ActiveRecord::Base
   has_many :recruitments
 
   validates_presence_of :title
+
+  serialize :steps_template, Array
 end

@@ -7,6 +7,12 @@ class PositionsController < ApplicationController
     position_params = params.require(:position).permit(:title, :name)
     @position = current_user.organization.positions.build(position_params)
 
+    # TODO: permit with strong parameters
+    steps_template = params[:steps_template].values.delete_if { |step|
+      step['order'].blank? || step['title'].blank? || step['description'].blank?
+    }
+    @position.steps_template = steps_template
+
     if @position.save
       redirect_to @position, notice: 'Position successfully created.'
     else

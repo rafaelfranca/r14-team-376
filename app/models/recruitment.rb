@@ -46,10 +46,8 @@ class Recruitment < ActiveRecord::Base
   #
   # Returns a RecruitmentStep or nothing.
   def next_step
-    if self.steps.where(state: 'reproved').exists?
-      return nil
+    if !self.steps.where(state: 'reproved').exists?
+      self.steps.order(:order).find_by(state: 'waiting')
     end
-
-    self.steps.order(:order).find_by(state: 'waiting')
   end
 end

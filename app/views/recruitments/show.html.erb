@@ -1,14 +1,14 @@
 <%= render 'positions/position_data' %>
 
 <section class="candidate recruitment">
-  <%= image_tag @recruitment.candidate.avatar + "&s=192", alt: @recruitment.candidate.name, title: @recruitment.candidate.name, width: "96", height: "96", class: "profile-picture ib" %>
+  <%= avatar(@recruitment.candidate.avatar, size: "96", alt: @recruitment.candidate.name, class: "profile-picture ib") %>
 
   <div class="info">
     <h3 class="ib"><%= @recruitment.candidate.name %></h3>
 
     <div class="participants">
       <% @recruitment.participants.each do |participant| %>
-        <%= image_tag participant.avatar + '&s=64', alt: participant.name, title: participant.name, width: '32', height: '32' %>
+        <%= avatar(participant.avatar, size: "32", alt: participant.name) %>
       <% end %>
     </div>
 

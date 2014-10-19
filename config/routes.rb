@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   get 'recruitment_steps/show'
 
-  resources :recruitments, only: [:show]
-  get 'positions' => 'positions#index'
-
   resources :organizations, only: [:new, :create]
 
   devise_scope :user do

@@ -23,11 +23,6 @@ RSpec.describe Recruitment, :type => :model do
 
     step.comments << Comment.new(body: 'Need to improve Git skills', author: rondy)
 
-    recruitment = Recruitment.new(position: position)
-    recruitment.participants << participant_1
-    recruitment.participants << participant_2
-    recruitment.save!
-
     expect(recruitment.participants).to match_array [rondy]
   end
 

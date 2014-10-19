@@ -1,0 +1,139 @@
+.recruitment {
+  &.step {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: right .3s ease;
+
+    &:hover {
+      right: 0;
+    }
+
+    h3 {
+      float: right;
+      margin: 20px 0 10px 0;
+    }
+    .profile-picture { float: right; }
+  }
+}
+
+.step-info {
+  max-width: 650px;
+  margin-top: -30px;
+
+  h4 {
+    margin: 1em 0 .5em 0;
+    font: normal 47px/44px "Abril Fatface", cursive;
+  }
+
+  .step-indicator {
+    color: #666;
+
+    &:after { content: "· "; }
+  }
+}
+
+.comments {
+  h5 {
+    font: normal 27px/24px "Abril Fatface", cursive;
+    text-align: center;
+  }
+
+  .profile-picture {
+    float: left;
+    margin: 0 10px 10px 0;
+    border-radius: 50%;
+  }
+
+  h6 {
+    display: inline-block;
+    max-width: 270px;
+    padding: 0;
+    margin: 5px 0 0 0;
+    font: normal 17px/14px "Abril Fatface", cursive;
+  }
+
+  .timestamp {
+    max-width: 210px;
+    margin: 0;
+    padding: 0;
+    font-size: .7em;
+  }
+
+  hr {
+    position: relative;
+    width: 250px;
+    margin: 2em auto;
+    border: 0 none;
+    border-bottom: 1px solid #F1F1F1;
+
+    &:after {
+      position: absolute;
+      display: block;
+      width: 10px;
+      height: 10px;
+      left: 50%;
+      margin-left: -5px;
+      margin-top: -9px;
+      background: #F1F1f1;
+      transform: rotate(45deg);
+      border:5px solid #FFF;
+      content: "";
+    }
+  }
+
+  article {
+    width: 70%;
+    min-width: 500px;
+    min-height: 100px;
+    margin: 0 auto 2em auto;
+
+    .comment-content {
+      padding: 0 0 0 20px;
+      margin: -50px 0 0 220px;
+      border-left: 2px solid #CCC;
+      border-radius: 10px
+    }
+  }
+
+  .comment-form {
+    width: 70%;
+    min-width: 500px;
+    min-height: 100px;
+    margin: 0 auto 2em auto;
+
+    .elements {
+      padding: 0 0 0 20px;
+      margin: -50px 0 0 220px;
+      border-left: 2px solid #CCC;
+    }
+
+    .textarea {
+      width: 100%;
+      min-height: 30px;
+      height: auto;
+      padding: 3px 1em;
+      border: 0 none;
+      background: rgba(200, 200, 200, .2);
+      border-radius: 10px;
+      outline: none;
+      transition: min-height .3s ease, padding .3s ease;
+
+      &:hover, &:focus {
+        min-height: 55px;
+        padding: 1em;
+      }
+    }
+
+    .theComment { display: none; }
+
+    .actions {
+      margin: 1em 0 0 0;
+
+      .button { margin-bottom: 0; }
+      .separator { float: right; }
+      .approve { border-left: 5px solid #6CC644; }
+      .reprove { border-left: 5px solid #F02; }
+    }
+  }
+}

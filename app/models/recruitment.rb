@@ -38,4 +38,18 @@ class Recruitment < ActiveRecord::Base
       'waiting'
     end
   end
+
+  # Public: The next step a candidate will be evaluated in.
+  #
+  # It's expected to always be the first waiting step, but there will not be
+  # next step if the candidate reproves in at least one step.
+  #
+  # Returns a RecruitmentStep or nothing.
+  def next_step
+    if self.steps.where(state: 'reproved').exists?
+      return nil
+    end
+
+    self.steps.order(:order).find_by(state: 'waiting')
+  end
 end

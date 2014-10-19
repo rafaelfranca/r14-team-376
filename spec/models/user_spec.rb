@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
       expect(user.uid).to eq('1')
       expect(user.name).to eq('Wesley Safadao')
       expect(user.email).to eq('wesleysafadao@garotasafada.com')
-      expect(user.image).to eq('image.png')
+      expect(user.avatar).to eq('image.png')
     end
 
     it 'does not create a new user if the uid and provider already exists' do
@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
       expect(user.uid).to eq('1')
       expect(user.name).to be_nil
       expect(user.email).to eq('foo@bar.com')
-      expect(user.image).to be_nil
+      expect(user.avatar).to be_nil
     end
   end
 end

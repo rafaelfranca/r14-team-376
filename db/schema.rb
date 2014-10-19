@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20141019143454) do
 
   create_table "positions", force: true do |t|
     t.string   "title",           null: false
-    t.string   "descrition"
+    t.string   "description"
     t.integer  "organization_id", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

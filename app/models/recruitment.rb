@@ -20,7 +20,7 @@ class Recruitment < ActiveRecord::Base
     total_steps_count = self.steps.count
 
     if total_steps_count.zero?
-      0
+      0.0
     else
       approved_steps_count = self.steps.where(state: 'approved').count
       (approved_steps_count * 100.0 / total_steps_count).round(2)

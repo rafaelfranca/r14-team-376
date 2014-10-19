@@ -27,6 +27,6 @@ ActiveRecord::Base.transaction do
 
   recruitment.steps.create!(order: 1, title: 'Entrevista via Skype')
   recruitment.steps.create!(order: 2, title: 'Mini app')
-  recruitment.steps.create!(order: 2, title: 'Pair programming')
-  recruitment.steps.create!(order: 2, title: 'Mesa de bar com George Guimarães')
+  recruitment.steps.create!(order: 3, title: 'Pair programming')
+  recruitment.steps.create!(order: 4, title: 'Mesa de bar com George Guimarães')
 end

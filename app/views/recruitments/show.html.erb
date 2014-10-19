@@ -1,4 +1,4 @@
-<%= render 'positions/position_data' %>
+<%= render 'positions/position_data', position: Position.new(title: 'Test', description: 'Test Data', created_at: DateTime.current) %>
 
 <section class="candidate recruitment">
   <%= avatar(@recruitment.candidate.avatar, size: "96", alt: @recruitment.candidate.name, class: "profile-picture ib") %>

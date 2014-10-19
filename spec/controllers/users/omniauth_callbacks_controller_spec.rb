@@ -8,59 +8,73 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
       request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
     end
 
-    it 'redirects to new organization path if organization_id is not set' do
-      post :github
+    context 'when user is already an system user' do
+      it 'logs in and redirect to organization path' do
+        organization = Organization.create!(name: 'Garota Safada')
+        user = User.create_from_github(OmniAuth.config.mock_auth[:github])
+        user.update(organization: organization)
 
-      expect(response).to redirect_to(new_organizations_url)
+        post :github
+
+        expect(response).to redirect_to(organization_url(organization))
+      end
     end
 
-    it 'redirects to root_url if user can be create' do
-      organization = Organization.create!(name: 'Garota Safada')
-      session['devise.organization_id'] = organization.id
+    context 'when user is not an system user' do
+      it 'redirects to new organization path if organization_id is not set' do
+        post :github
 
-      post :github
+        expect(response).to redirect_to(new_organization_url)
+      end
 
-      expect(response).to redirect_to(root_url)
-      expect(session['devise.organization_id']).to be_nil
-    end
+      it 'redirects to root_url if user can be create' do
+        organization = Organization.create!(name: 'Garota Safada')
+        session['devise.organization_id'] = organization.id
 
-    it 'sets the organization owner if it is a new organization' do
-      organization = Organization.create!(name: 'Garota Safada')
-      session['devise.organization_id'] = organization.id
+        post :github
 
-      post :github
+        expect(response).to redirect_to(organization_url(organization))
+        expect(session['devise.organization_id']).to be_nil
+      end
 
-      expect(response).to redirect_to(root_url)
+      it 'sets the organization owner if it is a new organization' do
+        organization = Organization.create!(name: 'Garota Safada')
+        session['devise.organization_id'] = organization.id
 
-      user = User.last
-      expect(user.organization).to eq organization
-      expect(organization.reload.owner).to eq user
-    end
+        post :github
 
-    it 'does not set the organization owner if it is not a new organization' do
-      owner = User.create!(name: 'Foo', email: 'foo@bar.com', password: '12345678')
-      organization = Organization.create!(name: 'Garota Safada', owner: owner)
-      session['devise.organization_id'] = organization.id
+        expect(response).to redirect_to(organization_url(organization))
 
-      post :github
+        user = User.last
+        expect(user.organization).to eq organization
+        expect(organization.reload.owner).to eq user
+      end
 
-      expect(response).to redirect_to(root_url)
+      it 'does not set the organization owner if it is not a new organization' do
+        owner = User.create!(name: 'Foo', email: 'foo@bar.com', password: '12345678')
+        organization = Organization.create!(name: 'Garota Safada', owner: owner)
+        session['devise.organization_id'] = organization.id
 
-      user = User.last
-      expect(user.organization).to eq organization
-      expect(organization.reload.owner).not_to eq user
-    end
+        post :github
 
-    it 'redirects to new_users_url if user cannot be created' do
-      organization = Organization.create!(name: 'Garota Safada')
-      session['devise.organization_id'] = organization.id
-      OmniAuth.config.add_mock(:github, { uid: '12345' })
-      request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
+        expect(response).to redirect_to(organization_url(organization))
 
-      post :github
+        user = User.last
+        expect(user.organization).to eq organization
+        expect(organization.reload.owner).not_to eq user
+      end
 
-      expect(response).to redirect_to(new_users_url)
-      expect(session['devise.github_data']).to eq(request.env['omniauth.auth'])
+      it 'redirects to new_users_url if user cannot be created' do
+        organization = Organization.create!(name: 'Garota Safada')
+        session['devise.organization_id'] = organization.id
+        OmniAuth.config.add_mock(:github, { uid: '12345' })
+        request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
+
+        post :github
+
+        expect(response).to redirect_to(new_users_url)
+        expect(session['devise.github_data']).to eq(request.env['omniauth.auth'])
+      end
     end
   end
 end

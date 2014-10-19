@@ -2,7 +2,7 @@
 
 <% @organization.positions.each do |position| -%>
   <div>
-    <%= link_to position.title, [@organization, position] %>
+    <%= link_to position.title, position %>
   </div>
 <% end -%>
-<%= link_to 'New position', new_organization_position_path %>
+<%= link_to 'New position', new_position_path %>

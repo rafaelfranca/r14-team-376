@@ -1,5 +1,6 @@
 class RecruitmentsController < ApplicationController
   def show
-    @recruitment = Recruitment.find(params[:id])
+    position = current_user.organization.positions.find(params[:position_id])
+    @recruitment = position.recruitments.find(params[:id])
   end
 end

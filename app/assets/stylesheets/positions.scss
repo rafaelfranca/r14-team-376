@@ -40,9 +40,25 @@
   border-radius: 50%;
 }
 .participants {
+  position: relative;
+
   img {
     border-radius: 50%;
     border: 3px solid transparent;
+  }
+  .exceed {
+    position: absolute;
+    top: 13px;
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    padding: 7px 0;
+    margin: -10px 0 0 5px;
+    border-radius: 50%;
+    font: bold .6em Montserrat, sans-serif;
+    text-align: center;
+    background: #CCC;
+    overflow: hidden;
   }
 
   .referrer { border: 3px solid red; }

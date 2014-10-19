@@ -40,4 +40,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1'
 end
 
-gem 'rails_stdout_logging', group: :production
+group :production do
+  gem 'rails_stdout_logging'
+  gem 'puma'
+end

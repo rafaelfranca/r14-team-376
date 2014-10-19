@@ -1,4 +1,4 @@
-<section class="candidate recruitment step">
+<section class="candidate <%= @step.recruitment.current_state %> recruitment step">
   <%= avatar(@step.recruitment.candidate.avatar, size: "96", alt: @step.recruitment.candidate.name, class: "profile-picture ib") %>
 
   <div class="info">
@@ -10,8 +10,8 @@
 </section>
 
 <section class="actions">
-  <a href="#" class="button approve">Approve candidate</a>
-  <a href="#" class="button reprove">Reprove candidate</a>
+  <%= link_to 'Approve candidate', approve_position_recruitment_recruitment_step_path, class: "button approve", method: :put %>
+  <%= link_to 'Reprove candidate', reprove_position_recruitment_recruitment_step_path, class: "button reprove", method: :put %>
 </section>
 
 

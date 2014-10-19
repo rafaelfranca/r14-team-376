@@ -1,4 +1,4 @@
-<li class="candidate">
+<li class="candidate <%= recruitment.current_state %>">
   <%= link_to [@position, recruitment] do %>
     <%= avatar(recruitment.candidate.avatar, size: "96", alt: recruitment.candidate.name, class: "profile-picture ib") %>
 

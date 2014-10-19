@@ -14,7 +14,12 @@ Rails.application.routes.draw do
 
   resources :positions, only: [:new, :create, :show] do
     resources :recruitments, only: [:show, :new, :create] do
-      resources :recruitment_steps, only: [:show], path: 'steps'
+      resources :recruitment_steps, only: [:show], path: 'steps' do
+        member do
+          put :approve
+          put :reprove
+        end
+      end
     end
   end
 

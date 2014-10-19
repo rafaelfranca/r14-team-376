@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  get '/:organization_id' => 'organizations#show', as: :organization
+
   root to: 'home#index'
 end

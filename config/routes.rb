@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   get '/:organization_id' => 'organizations#show', as: :organization
 
-  scope '/:organization_id' do
-    resources :positions, only: [:new, :create, :show], as: :organization_positions
+  resources :positions, only: [:new, :create, :show] do
+    resources :recruitments, only: [:show]
   end
 
   root to: 'home#index'

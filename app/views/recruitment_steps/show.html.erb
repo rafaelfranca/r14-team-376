@@ -1,10 +1,10 @@
 <section class="candidate recruitment step">
-  <img alt="Daniel Filho" title="Daniel Filho" class="profile-picture ib" src="http://www.gravatar.com/avatar/3f2ebf61315d43cae59e727dab091620?s=96&amp;s=192" height="96" width="96">
+  <%= avatar(@step.recruitment.candidate.avatar, size: "96", alt: @step.recruitment.candidate.name, class: "profile-picture ib") %>
 
   <div class="info">
-    <h3 class="ib">Daniel Filho</h3>
+    <h3 class="ib"><%= @step.recruitment.candidate.name %></h3>
     <div class="progress-bar">
-      <span class="progress" style="width: 0.0%"></span>
+      <span class="progress" style="width: <%= @step.recruitment.progress %>%"></span>
     </div>
   </div>
 </section>
@@ -16,119 +16,55 @@
 
 
 <section class="step-info">
-  <h4><span class="step-indicator">3</span> Mesa de Bar com George Guimarães</h4>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus assumenda autem molestias quasi numquam dignissimos natus provident sunt excepturi. Architecto, rerum, voluptatibus! Ullam dolores autem inventore mollitia voluptate amet consequatur.</p>
+  <h4><span class="step-indicator"><%= @step.order %></span> <%= @step.title %></h4>
+  <p><%= @step.description %></p>
 </section>
 
 <section class="comments">
   <h5>Comments about the candidate</h5>
 
   <div class="comments-wrapper">
-    <article>
-      <div class="meta">
-        <img alt="Daniel Filho" title="Daniel Filho" class="profile-picture ib" src="http://www.gravatar.com/avatar/3f2ebf61315d43cae59e727dab091620?s=96" height="48" width="48">
-        <h6 class="name">Daniel Filho</h6>
-        <p class="timestamp">22/10/2014 11:42pm</p>
-      </div>
-      <div class="comment-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-      </div>
-      <hr>
-    </article>
+    <% @step.comments.each do |comment| %>
+      <article>
+        <div class="meta">
+          <%= avatar(comment.author.avatar, size: "48", alt: comment.author.name, class: "profile-picture ib") %>
+          <h6 class="name"><%= comment.author.name %></h6>
+          <p class="timestamp"><%= l comment.created_at, format: :long %></p>
+        </div>
 
-
-    <article>
-      <div class="meta">
-        <img alt="Daniel Filho" title="Daniel Filho" class="profile-picture ib" src="http://www.gravatar.com/avatar/3f2ebf61315d43cae59e727dab091620?s=96" height="48" width="48">
-        <h6 class="name">Daniel Filho</h6>
-        <p class="timestamp">22/10/2014 11:42pm</p>
-      </div>
-      <div class="comment-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-      </div>
-      <hr>
-    </article>
-    <article>
-      <div class="meta">
-        <img alt="Daniel Filho" title="Daniel Filho" class="profile-picture ib" src="http://www.gravatar.com/avatar/3f2ebf61315d43cae59e727dab091620?s=96" height="48" width="48">
-        <h6 class="name">Daniel Filho</h6>
-        <p class="timestamp">22/10/2014 11:42pm</p>
-      </div>
-      <div class="comment-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-      </div>
-      <hr>
-    </article>
-    <article>
-      <div class="meta">
-        <img alt="Daniel Filho" title="Daniel Filho" class="profile-picture ib" src="http://www.gravatar.com/avatar/3f2ebf61315d43cae59e727dab091620?s=96" height="48" width="48">
-        <h6 class="name">Daniel Filho</h6>
-        <p class="timestamp">22/10/2014 11:42pm</p>
-      </div>
-      <div class="comment-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-      </div>
-      <hr>
-    </article>
-    <article>
-      <div class="meta">
-        <img alt="Daniel Filho" title="Daniel Filho" class="profile-picture ib" src="http://www.gravatar.com/avatar/3f2ebf61315d43cae59e727dab091620?s=96" height="48" width="48">
-        <h6 class="name">Daniel Filho</h6>
-        <p class="timestamp">22/10/2014 11:42pm</p>
-      </div>
-      <div class="comment-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-      </div>
-      <hr>
-    </article>
-    <article>
-      <div class="meta">
-        <img alt="Daniel Filho" title="Daniel Filho" class="profile-picture ib" src="http://www.gravatar.com/avatar/3f2ebf61315d43cae59e727dab091620?s=96" height="48" width="48">
-        <h6 class="name">Daniel Filho</h6>
-        <p class="timestamp">22/10/2014 11:42pm</p>
-      </div>
-      <div class="comment-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum natus dolorum, quo maiores consequuntur possimus, dicta porro voluptas officiis! Dolorem, minima magni corporis rem voluptatem, quos minus accusantium atque. Deserunt!</p>
-      </div>
-      <hr>
-    </article>
+        <div class="comment-content">
+          <%= sanitize comment.body %>
+        </div>
+        <hr>
+      </article>
+    <% end %>
 
     <div class="comment-form">
       <div class="meta">
-        <img alt="Daniel Filho" title="Daniel Filho" class="profile-picture ib" src="http://www.gravatar.com/avatar/3f2ebf61315d43cae59e727dab091620?s=96" height="48" width="48">
-        <h6 class="name">Daniel Filho</h6>
-        <p class="timestamp">22/10/2014 11:42pm</p>
+        <%= avatar(current_user.avatar, size: "48", alt: current_user.name, class: "profile-picture ib") %>
+        <h6 class="name"><%= current_user.name %></h6>
       </div>
 
       <div class="elements">
-        <form action="?">
+        <%= form_for Comment.new do |f| %>
+          <%= hidden_field_tag :recruitment_step_id, @step.id %>
+
           <label for="commentBox">Write your comment</label>
           <div id="commentBox" class="textarea" contenteditable></div>
-          <textarea name="theComment" id="theComment" class="theComment"></textarea>
-          <button class="button">Post</button>
-        </form>
+          <%= f.text_area :body, class: 'theComment' %>
+
+          <div class="actions">
+            <%= f.submit 'Post', class: 'button' %>
+          </div>
+        <% end %>
       </div>
     </div>
-
   </div>
 </section>
 
-
 <script>
   var commentElement = document.querySelector('.textarea'),
-    textArea = document.querySelector('#theComment');
+    textArea = document.querySelector('#comment_body');
 
     if(commentElement) {
       commentElement.addEventListener('keyup', function(e) {

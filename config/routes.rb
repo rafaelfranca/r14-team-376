@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'recruitment_steps/show'
+  resources :comments, only: [:create]
 
   resources :organizations, only: [:new, :create]
 
@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get '/:organization_id' => 'organizations#show', as: :organization
 
   resources :positions, only: [:new, :create, :show] do
-    resources :recruitments, only: [:show]
+    resources :recruitments, only: [:show] do
+      resources :recruitment_steps, only: [:show], path: 'steps'
+    end
   end
 
   root to: 'home#index'

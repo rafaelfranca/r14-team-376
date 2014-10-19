@@ -1,6 +1,7 @@
 <h1>Create a new position</h1>
 
-<%= form_for([@organization, @position]) do |f| %>
+<%= form_for(@position) do |f| %>
+  <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
 

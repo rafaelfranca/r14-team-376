@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   get 'recruitment_steps/show'
 
-  resources :recruitments, only: [:show]
-  get 'positions' => 'positions#index'
-
   resources :organizations, only: [:new, :create]
 
   devise_scope :user do
@@ -15,8 +12,8 @@ Rails.application.routes.draw do
 
   get '/:organization_id' => 'organizations#show', as: :organization
 
-  scope '/:organization_id' do
-    resources :positions, only: [:new, :create, :show], as: :organization_positions
+  resources :positions, only: [:new, :create, :show] do
+    resources :recruitments, only: [:show]
   end
 
   root to: 'home#index'

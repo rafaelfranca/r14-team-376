@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   resources :organizations, only: [:new, :create]
 
-  get '/users/new' => 'users/registrations#new', as: :new_users
-  post '/users' => 'users/registrations#create'
+  devise_scope :user do
+    get '/users/new' => 'users/registrations#new', as: :new_users
+    post '/users' => 'users/registrations#create'
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 

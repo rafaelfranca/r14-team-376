@@ -45,17 +45,6 @@ h2 {
   font-size: 2em;
   text-transform: uppercase;
   letter-spacing: -1px;
-
-  &:before {
-    position: absolute;
-    top: -10px;
-    left: 0;
-    content: "position:";
-    font-weight: normal;
-    font-size: .5em;
-    color: #999;
-    letter-spacing: normal;
-  }
 }
 
 .user-info {
@@ -64,6 +53,14 @@ h2 {
   right: 0;
   width: 250px;
   height: 100px;
+  padding: 0;
+  margin: -10px 0 0 0;
+  list-style: none;
+  font-size: .8em;
+
+  li {
+    display: inline-block;
+  }
 
   .user-name {
     width: 180px;
@@ -99,19 +96,3 @@ h2 {
   }
 
 }
-.user-info, .position-data ul {
-  padding: 0;
-  margin: -10px 0 0 0;
-  list-style: none;
-
-  li {
-    display: inline-block;
-    font-size: .8em;
-  }
-  .candidates-count:before {
-    margin: 0 .5em 0 .3em;
-    content: "·";
-    font-weight: bold;
-  }
-}
-

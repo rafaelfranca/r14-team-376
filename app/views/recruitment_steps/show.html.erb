@@ -40,27 +40,29 @@
       </div>
 
       <div class="elements">
-        <form action="?">
+        <%= form_for Comment.new do |f| %>
+          <%= hidden_field_tag :recruitment_step_id, @step.id %>
+
           <label for="commentBox">Write your comment</label>
           <div id="commentBox" class="textarea" contenteditable></div>
+          <%= f.text_area :body, class: 'theComment' %>
 
           <div class="actions">
-            <button class="button">Post</button>
+            <%= f.submit 'Post', class: 'button' %>
               <div class="separator">
                 <button class="button approve">Approve</button>
                 <button class="button reprove">Reprove</button>
               </div>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
-
   </div>
 </section>
 
 <script>
   var commentElement = document.querySelector('.textarea'),
-    textArea = document.querySelector('#theComment');
+    textArea = document.querySelector('#comment_body');
 
     if(commentElement) {
       commentElement.addEventListener('keyup', function(e) {

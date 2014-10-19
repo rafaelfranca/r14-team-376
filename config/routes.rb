@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :recruitment_steps, only: [:show], path: 'steps'
   end
 
+  resources :comments, only: [:create]
+
   get 'positions' => 'positions#index'
 
   resource :organizations, only: [:new, :create]

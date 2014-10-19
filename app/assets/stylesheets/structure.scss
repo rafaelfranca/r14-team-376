@@ -96,3 +96,25 @@ h2 {
   }
 
 }
+
+.user-info, .position-data ul {
+  padding: 0;
+  margin: -10px 0 0 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    font-size: .8em;
+  }
+  .candidates-count:before {
+    margin: 0 .5em 0 .3em;
+    content: "·";
+    font-weight: bold;
+  }
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}

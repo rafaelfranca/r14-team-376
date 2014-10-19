@@ -18,8 +18,13 @@ class Recruitment < ActiveRecord::Base
   # Returns a Decimal.
   def progress
     total_steps_count = self.steps.count
-    approved_steps_count = self.steps.where(state: 'approved').count
-    (approved_steps_count * 100.0 / total_steps_count).round(2)
+
+    if total_steps_count.zero?
+      0
+    else
+      approved_steps_count = self.steps.where(state: 'approved').count
+      (approved_steps_count * 100.0 / total_steps_count).round(2)
+    end
   end
 
   # Public: The current state based on the overall steps states.

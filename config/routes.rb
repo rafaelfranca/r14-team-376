@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/:organization_id' => 'organizations#show', as: :organization
 
   resources :positions, only: [:new, :create, :show] do
-    resources :recruitments, only: [:show] do
+    resources :recruitments, only: [:show, :new, :create]
       resources :recruitment_steps, only: [:show], path: 'steps'
     end
   end

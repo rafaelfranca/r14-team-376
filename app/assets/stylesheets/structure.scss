@@ -66,6 +66,12 @@ input[type=password] {
   &:focus, &:active { outline: none; }
 }
 
+.clearfix:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+
 .checkbox-label { display: inline-block; }
 
 .navigation {

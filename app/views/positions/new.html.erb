@@ -6,21 +6,58 @@
 
   <%= f.label :description %>
   <%= f.text_field :description %>
+  <hr>
 
   <h3>Steps template</h3>
 
-  <% 4.times do |n| %>
-    <%= label_tag "steps_template_#{n}_order", 'Order' %>
-    <%= text_field_tag "steps_template[#{n}][order]" %>
+  <!--% 4.times do |n| %-->
 
-    <%= label_tag "steps_template_#{n}_title", 'Title' %>
-    <%= text_field_tag "steps_template[#{n}[title]" %>
+  <div class="step-form">
+    <!--%= label_tag "steps_template_#{n}_order", 'Order' %-->
+    <!--%= text_field_tag "steps_template[#{n}][order]" %-->
 
-    <%= label_tag "steps_template_#{n}_description", 'Description' %>
-    <%= text_field_tag "steps_template[#{n}[description]" %>
+    <!--%= label_tag "steps_template_#{n}_title", 'Title' %-->
+    <!--%= text_field_tag "steps_template[#{n}][title]" %-->
 
-    <hr/>
-  <% end %>
+    <!--%= label_tag "steps_template_#{n}_description", 'Description' %-->
+    <!--%= text_field_tag "steps_template[#{n}][description]" %-->
+  </div>
+
+  <div class="step-actions">
+    <a href="#" id="addstep" class="button">Add step</a>
+  </div>
+
+  <!--% end %-->
 
   <%= f.submit 'Create', class: "button" %>
 <% end -%>
+
+
+<script type="template" id='step-template'>
+  <h3>New step</h3>
+
+  <%= label_tag 'Order' %>
+  <%= text_field_tag "steps_template[ITERATOR][order]" %>
+
+  <%= label_tag 'Title' %>
+  <%= text_field_tag "steps_template[ITERATOR][title]" %>
+
+  <%= label_tag 'Description' %>
+  <%= text_field_tag "steps_template[ITERATOR][description]" %>
+  <hr>
+</script>
+
+<script type="text/javascript">
+  function addFieldset(e) {
+    e.preventDefault();
+
+    var timestamp = new Date();
+    var preTemplate = $('#step-template').html();
+    var regexp = new RegExp('ITERATOR', 'g');
+    var template = preTemplate.replace(regexp, +timestamp);
+
+    $('.step-form').append(template);
+  }
+
+  $('#addstep').on('click', addFieldset);
+</script>

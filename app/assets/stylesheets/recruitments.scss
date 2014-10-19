@@ -48,8 +48,7 @@ $step-height: 120px;
       z-index: 0;
     }
 
-
-    &.current:before {
+    &.next-step:before {
       background: yellow;
     }
 

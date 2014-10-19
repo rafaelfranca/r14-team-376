@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   list-style: none;
-  // counter-reset: candidate-counter;
 }
 .candidate {
   position: relative;
@@ -23,8 +22,6 @@
     right: .2em;
     font: normal 32px/29px "Abril Fatface", cursive;
     color: #E3E3E3;
-    // content: counter(candidate-counter);
-    // counter-increment: candidate-counter;
   }
 }
 
@@ -42,10 +39,16 @@
   margin: 0 1em 0 0;
   border-radius: 50%;
 }
-.participants img {
-  margin: 0 7px 0 0;
-  border-radius: 50%;
+.participants {
+  img {
+    border-radius: 50%;
+    border: 3px solid transparent;
+  }
+
+  .referrer { border: 3px solid red; }
+  .recruiter { border: 3px solid hotpink; }
 }
+
 .candidate.reproved {
   .progress-bar {
     background-color: red;

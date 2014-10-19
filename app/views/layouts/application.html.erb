@@ -10,22 +10,30 @@
 <body>
 
   <header>
-    <h1>Mitto</h1>
+    <h1><a href="/">Mitto</a></h1>
+    <ul class="user-info">
+      <li>
+        <% if user_signed_in? -%>
+          <p class="profile-picture"><img src="<%= current_user.avatar + '&s=128' %>" width="64" height="64" alt="<%= current_user.name %>"></p>
+          <p class="user-name"><%= current_user.name %></p>
+          <p class="logout"><%= link_to raw('&times;'), destroy_user_session_path, method: :delete, title: "Log out" %></p>
+        <% end -%>
+      </li>
+    </ul>
+  </header>
+
+  <section class="position-data">
     <h2>Web Developer</h2>
     <ul>
       <li class="meta" title="Published">08/22/2014</li>
       <li class="candidates-count">Candidates: <span class="active" title="Runners">3</span> / <span class="total" title="Total candidates">8</span></li>
     </ul>
-  </header>
+  </section>
 
   <section class="messages">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </section>
-
-  <% if user_signed_in? -%>
-    <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-  <% end -%>
 
   <div class="content">
     <%= yield %>

@@ -6,6 +6,7 @@
 body {
   padding: 0 4em;
   font-family: "Open Sans", sans-serif;
+  color: #333;
 }
 
 hr {
@@ -24,32 +25,85 @@ a {
 
 header {
   position: relative;
-  height: 120px;
-  margin-bottom: 40px;
+  height: 100px;
+  margin-bottom: 25px;
   border-bottom: 1px solid #333;
 
   h1 {
     float: left;
-    margin: .2em 0 .5em 0;
+    margin: 0 0 20px 0;
     font: normal 87px/84px "Abril Fatface", cursive;
-  }
 
-  h2 {
-    float: right;
-    margin-top: .8em;
-    font-size: 2em;
-    text-transform: uppercase;
-    letter-spacing: -1px;
+    a { color: #333; }
   }
+}
 
-  ul {
+h2 {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+
+  &:before {
     position: absolute;
-    bottom: 1em;
-    right: 0;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    top: -10px;
+    left: 0;
+    content: "position:";
+    font-weight: normal;
+    font-size: .5em;
+    color: #999;
+    letter-spacing: normal;
   }
+}
+
+.user-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100px;
+
+  .user-name {
+    width: 180px;
+    margin: 2em 2em 0 0;
+    font-size: 1em;
+    text-align: right;
+  }
+  .profile-picture {
+    position: absolute;
+    right: 0;
+    width: 62px;
+    height: 62px;
+
+    img {
+      border-radius: 50%;
+      z-index: 1;
+    }
+  }
+  .logout {
+    position: absolute;
+    top: 25px;
+    right: -10px;
+    padding: 0 7px;
+    margin: -15px 0 0 5px;
+    border-radius: 50%;
+    background: #F1F1F1;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2;
+
+    a { color: #CC1616; }
+  }
+
+}
+.user-info, .position-data ul {
+  padding: 0;
+  margin: -10px 0 0 0;
+  list-style: none;
+
   li {
     display: inline-block;
     font-size: .8em;
@@ -60,3 +114,4 @@ header {
     font-weight: bold;
   }
 }
+

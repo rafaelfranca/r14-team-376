@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'recruitment_steps/show'
+  resources :recruitments, only: [:show] do
+    resources :recruitment_steps, only: [:show], path: 'steps'
+  end
 
-  resources :recruitments, only: [:show]
   get 'positions' => 'positions#index'
 
   resource :organizations, only: [:new, :create]

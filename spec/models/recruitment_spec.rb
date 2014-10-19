@@ -2,20 +2,14 @@
 require 'rails_helper'
 
 RSpec.describe Recruitment, :type => :model do
-  it 'is owned by a recruiter' do
-    recruiter = User.create!(email: 'pat.belda@ptec.com.br', password: '12345678')
+  fixtures :all
 
-    recruitment = Recruitment.new
-    recruitment.recruiter = recruiter
-    recruitment.save!
-
-    expect(recruitment.recruiter).to eq recruiter
-  end
+  let(:position) { positions(:developer) }
 
   it 'recruits a candidate' do
     candidate = Candidate.create!(name: 'Wesley Safadão')
 
-    recruitment = Recruitment.new
+    recruitment = Recruitment.new(position: position)
     recruitment.candidate = candidate
     recruitment.save!
 
@@ -29,6 +23,11 @@ RSpec.describe Recruitment, :type => :model do
 
     step.comments << Comment.new(body: 'Need to improve Git skills', author: rondy)
 
+    recruitment = Recruitment.new(position: position)
+    recruitment.participants << participant_1
+    recruitment.participants << participant_2
+    recruitment.save!
+
     expect(recruitment.participants).to match_array [rondy]
   end
 
@@ -37,7 +36,7 @@ RSpec.describe Recruitment, :type => :model do
     step_2 = RecruitmentStep.new(order: 2, title: 'Mini app')
     step_3 = RecruitmentStep.new(order: 3, title: 'Pair programming')
 
-    recruitment = Recruitment.new
+    recruitment = Recruitment.new(position: position)
     recruitment.steps << step_1
     recruitment.steps << step_2
     recruitment.steps << step_3
@@ -52,7 +51,7 @@ RSpec.describe Recruitment, :type => :model do
     step_2 = RecruitmentStep.new(order: 2, title: 'Mini app', state: 'waiting')
     step_3 = RecruitmentStep.new(order: 3, title: 'Pair programming', state: 'waiting')
 
-    recruitment = Recruitment.new
+    recruitment = Recruitment.new(position: position)
     recruitment.steps << step_1
     recruitment.steps << step_2
     recruitment.steps << step_3
@@ -76,8 +75,7 @@ RSpec.describe Recruitment, :type => :model do
       step_2 = RecruitmentStep.new(order: 2, title: 'Mini app', state: 'waiting')
       step_3 = RecruitmentStep.new(order: 3, title: 'Pair programming', state: 'waiting')
 
-      recruitment = Recruitment.new
-
+      recruitment = Recruitment.new(position: position)
       recruitment.steps << step_1
       recruitment.steps << step_2
       recruitment.steps << step_3
@@ -114,8 +112,7 @@ RSpec.describe Recruitment, :type => :model do
     let(:step_3) { RecruitmentStep.new(order: 3, title: 'Pair programming', state: 'waiting') }
 
     subject(:recruitment) do
-      recruitment = Recruitment.create!
-
+      recruitment = Recruitment.create!(position: position)
       recruitment.steps << step_1
       recruitment.steps << step_2
       recruitment.steps << step_3

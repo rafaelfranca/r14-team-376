@@ -54,4 +54,3 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     end
   end
 end
-

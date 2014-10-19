@@ -1,4 +1,6 @@
 class Users::RegistrationsController < ApplicationController
+  include OrganizationFetcher
+
   skip_before_action :authenticate_user!
   before_action :fetch_organization
 
@@ -17,16 +19,6 @@ class Users::RegistrationsController < ApplicationController
       flash[:notice] = t('devise.registrations.signed_up')
     else
       render 'new'
-    end
-  end
-
-  private
-
-  def fetch_organization
-    @organization = Organization.find_by(id: session['devise.organization_id'])
-
-    unless @organization
-      redirect_to new_organizations_url, alert: 'Create a new organization'
     end
   end
 end

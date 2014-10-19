@@ -47,7 +47,7 @@ h2 {
   letter-spacing: -1px;
 }
 
-.user-info {
+.navigation {
   position: absolute;
   top: 0;
   right: 0;
@@ -58,9 +58,19 @@ h2 {
   list-style: none;
   font-size: .8em;
 
-  li {
-    display: inline-block;
+  .session-actions {
+    margin-top: 4em;
+    text-align: right;
   }
+
+  .session-actions p {
+    display: inline-block;
+    margin: 0 1em;
+  }
+}
+
+.user-info {
+  display: inline-block;
 
   .user-name {
     width: 180px;
@@ -68,6 +78,7 @@ h2 {
     font-size: 1em;
     text-align: right;
   }
+
   .profile-picture {
     position: absolute;
     right: 0;
@@ -79,6 +90,7 @@ h2 {
       z-index: 1;
     }
   }
+
   .logout {
     position: absolute;
     top: 25px;
@@ -94,5 +106,4 @@ h2 {
 
     a { color: #CC1616; }
   }
-
 }

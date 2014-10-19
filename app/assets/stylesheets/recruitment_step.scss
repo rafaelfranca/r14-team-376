@@ -33,6 +33,21 @@
   }
 }
 
+.actions {
+  margin: 1em 0 0 0;
+
+  .button { margin-bottom: 0; }
+  .separator { float: right; }
+
+  .approve,
+  .approve:active,
+  .approve:hover { border-left: 5px solid #6CC644; }
+
+  .reprove,
+  .reprove:active,
+  .reprove:hover { border-left: 5px solid #F02; }
+}
+
 .comments {
   h5 {
     font: normal 27px/24px "Abril Fatface", cursive;
@@ -126,14 +141,5 @@
     }
 
     .theComment { display: none; }
-
-    .actions {
-      margin: 1em 0 0 0;
-
-      .button { margin-bottom: 0; }
-      .separator { float: right; }
-      .approve { border-left: 5px solid #6CC644; }
-      .reprove { border-left: 5px solid #F02; }
-    }
   }
 }

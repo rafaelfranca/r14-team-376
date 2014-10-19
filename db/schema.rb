@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 20141019213225) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "avatar"
+    t.string   "twitter"
+    t.string   "github"
+    t.string   "skype"
+    t.string   "linkedin"
+    t.string   "email"
   end
 
   create_table "comments", force: true do |t|

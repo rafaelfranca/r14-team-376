@@ -1,4 +1,4 @@
-<li class="candidate">
+<li class="candidate <%= recruitment.current_state %>">
   <%= link_to [@position, recruitment] do %>
     <%= avatar(recruitment.candidate.avatar, size: "96", alt: recruitment.candidate.name, class: "profile-picture ib") %>
 
@@ -8,7 +8,8 @@
       <div class="participants">
         <% recruitment.participants.each do |participant| %>
           <%= avatar(participant.avatar, size: "32", alt: participant.name) %>
-      <% end %>
+        <% end %>
+        <span class="exceed">+8</span>
       </div>
 
       <div class="progress-bar">

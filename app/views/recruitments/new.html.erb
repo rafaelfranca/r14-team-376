@@ -1,0 +1,23 @@
+<h2>Create a new candidate</h2>
+
+<%= form_for(@candidate, url: position_recruitments_path(@position)) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :github %>
+  <%= f.text_field :github %>
+
+  <%= f.label :twitter %>
+  <%= f.text_field :twitter %>
+
+  <%= f.label :linkedin %>
+  <%= f.text_field :linkedin %>
+
+  <%= f.label :skype %>
+  <%= f.text_field :skype %>
+
+  <%= f.submit 'Create', class: "button create" %>
+<% end -%>

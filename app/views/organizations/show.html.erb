@@ -1,1 +1,8 @@
 <h1><%= @organization.name %></h1>
+
+<% @organization.positions.each do |position| -%>
+  <div>
+    <%= link_to position.title, [@organization, position] %>
+  </div>
+<% end -%>
+<%= link_to 'New position', new_organization_position_path %>

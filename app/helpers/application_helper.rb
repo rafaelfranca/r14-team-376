@@ -9,7 +9,7 @@ module ApplicationHelper
     else
       high_definition_size = size.to_i * 2
 
-      image_tag("http://placehold.it/#{high_definition_size}x#{high_definition_size}", size: size, alt: alt, title: alt, **options)
+      image_tag("profile.png", size: size, alt: alt, title: alt, **options)
     end
   end
 end

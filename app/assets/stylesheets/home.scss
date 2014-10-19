@@ -37,20 +37,30 @@
   position: relative;
   overflow: hidden;
 
-  ul {
+  & > ul {
+    width: 100vw;
+    height: 100vh;
     padding: 0;
     margin: 0;
     list-style: none;
+    overflow: hidden;
   }
 
   .step {
-    margin: -50px 0 0 -30px;
+    display: inline-block;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 
-    .number { font: normal 72px "Abril Fatface", cursive; }
+    .number {
+      font: normal 72px "Abril Fatface", cursive;
+      color: #CCC;
+    }
     p {
-      margin: -75px 0 0 50px;
+      margin: -77px 0 0 30px;
       width: 350px;
-      font: bold 48px/45px Montserrat;
+      font: bold 45px/42px Montserrat;
       letter-spacing: -2px;
       color: #333;
     }
@@ -68,6 +78,7 @@
 
 
 .home-footer {
+  margin: 2em 0 0 0;
   text-align: center;
   font: normal 17px/14px Montserrat;
   color: #333;

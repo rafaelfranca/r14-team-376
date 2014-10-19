@@ -1,17 +1,11 @@
 <h1>Create a new position</h1>
 
 <%= form_for([@organization, @position]) do |f| %>
-  <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
-  </div>
 
-  <div>
     <%= f.label :description %>
     <%= f.text_field :description %>
-  </div>
 
-  <div>
-    <%= f.submit 'Create' %>
-  </div>
+    <%= f.submit 'Create', class: "button" %>
 <% end -%>

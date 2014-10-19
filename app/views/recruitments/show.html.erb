@@ -27,7 +27,7 @@
       %>
 
       <%= content_tag :li, class: step_html_class do %>
-        <%= link_to step.title, recruitment_recruitment_step_path(@recruitment, step) %>
+        <%= link_to step.title, position_recruitment_recruitment_step_path(@recruitment.position, @recruitment, step) %>
       <% end %>
     <% end %>
   </ol>

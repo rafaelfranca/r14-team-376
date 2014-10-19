@@ -47,6 +47,9 @@ RSpec.describe Recruitment, :type => :model do
     step_3 = RecruitmentStep.new(order: 3, title: 'Pair programming', state: 'waiting')
 
     recruitment = Recruitment.new(position: position)
+
+    expect(recruitment.progress).to eq 0.0
+
     recruitment.steps << step_1
     recruitment.steps << step_2
     recruitment.steps << step_3

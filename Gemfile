@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
+
 gem 'rails', github: "rails/rails"
 
 # Use postgresql as the database for Active Record
@@ -38,3 +40,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1'
 end
 
+group :production do
+  gem 'rails_stdout_logging'
+  gem 'puma'
+end

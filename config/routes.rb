@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'recruitment_steps/show'
+
   resources :recruitments, only: [:show]
   get 'positions' => 'positions#index'
 

@@ -22,16 +22,14 @@ RSpec.describe Recruitment, :type => :model do
     expect(recruitment.candidate).to eq candidate
   end
 
-  it 'is kept up by many participants' do
-    participant_1 = User.create!(email: 'rondy.sousa@ptec.com.br', password: '12345678')
-    participant_2 = User.create!(email: 'rafael.franca@ptec.com.br', password: '12345678')
+  it 'tracks as participant when someone comments in a recruitment step' do
+    rondy = User.create!(email: 'rondy.sousa@ptec.com.br', password: '12345678')
+    recruitment = Recruitment.create
+    step = RecruitmentStep.create(recruitment: recruitment, title: 'Mini app')
 
-    recruitment = Recruitment.new
-    recruitment.participants << participant_1
-    recruitment.participants << participant_2
-    recruitment.save!
+    step.comments << Comment.new(body: 'Need to improve Git skills', author: rondy)
 
-    expect(recruitment.participants).to match_array [participant_1, participant_2]
+    expect(recruitment.participants).to match_array [rondy]
   end
 
   it 'makes progress on many ordered steps' do
